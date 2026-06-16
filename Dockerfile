@@ -1,7 +1,7 @@
 # Minimal image packaging the Stalwart management CLI (stalwart-cli) 
 ARG VERSION=v1.0.8
 
-FROM alpine:3.20 AS build
+FROM alpine:3.24 AS build
 ARG VERSION
 ARG ARCH=x86_64-unknown-linux-musl
 RUN apk add --no-cache curl xz \
@@ -11,7 +11,7 @@ RUN apk add --no-cache curl xz \
  && tar -xJf "stalwart-cli-${ARCH}.tar.xz" --strip-components=1 -C /usr/local/bin "stalwart-cli-${ARCH}/stalwart-cli" \
  && chmod +x /usr/local/bin/stalwart-cli
 
-FROM alpine:3.20
+FROM alpine:3.24
 RUN apk add --no-cache ca-certificates
 COPY --from=build /usr/local/bin/stalwart-cli /usr/local/bin/stalwart-cli
 ENTRYPOINT ["stalwart-cli"]
