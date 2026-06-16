@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Bump the stalwart-cli release pinned in the Dockerfile (ARG VERSION)",
+      "fileMatch": ["(^|/)Dockerfile$"],
+      "matchStrings": ["ARG VERSION=(?<currentValue>\\S+)"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "stalwartlabs/cli"
+    }
+  ]
+}
