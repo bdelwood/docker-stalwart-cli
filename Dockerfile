@@ -1,5 +1,5 @@
 # Minimal image packaging the Stalwart management CLI (stalwart-cli) 
-ARG VERSION=v1.0.10
+ARG VERSION=v1.0.12
 
 FROM alpine:3.24 AS build
 ARG VERSION
